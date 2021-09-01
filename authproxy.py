@@ -123,8 +123,7 @@ class AuthServiceProxy(object):
     def __call__(self, *args):
         AuthServiceProxy.__id_count += 1
 
-        log.debug("-%s-> %s %s" % (AuthServiceProxy.__id_count, self.__service_name,
-                                   json.dumps(args, default=EncodeDecimal)))
+        log.debug("-%s-> %s %s", AuthServiceProxy.__id_count, self.__service_name, json.dumps(args, default=EncodeDecimal))
         postdata = json.dumps({'version': '1.1',
                                'method': self.__service_name,
                                'params': args,
@@ -196,7 +195,7 @@ class AuthServiceProxy(object):
         response = json.loads(responsedata, parse_float=decimal.Decimal)
         if "error" in response and response["error"] is None:
             log.debug(
-                "<-%s- %s" % (response["id"], json.dumps(response["result"], default=EncodeDecimal)))
+                "<-%s- %s", response["id"], json.dumps(response["result"], default=EncodeDecimal))
         else:
             log.debug("<-- "+responsedata)
         return response
