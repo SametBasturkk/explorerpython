@@ -76,7 +76,7 @@ def timeLockInterestRepairInSeedBlocks(correctionArray, block, analyzedSegmentIn
                         else:
                             print('locked period :', lockedPeriodInBlocks)
                             (20)
-                if flag == False:
+                if flag is False:
                     print(color4, '---- problem----', resetColor)
     message = 'input segment on current block updated with correct time lock amounts....'
     messageLenght = len(message)
@@ -282,7 +282,7 @@ def updateAddressBalanceDb(block, addressesArrayToCalculate):
         amount = arrayRow['amountInThisBlock']
         myquery = {"_id": address}
         target = mycol.find_one(myquery)
-        if target == None:
+        if target is None:
             #print('New address (', address, ')... created record')
             record = {'_id': address, 'balance': amount,
                       'lastUpdatedInBlock': block}

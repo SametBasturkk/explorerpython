@@ -208,7 +208,7 @@ def calculatesForTimeLockTx(txFees, listInputsWithInterest, resolvedInputSegment
             mydb = myclient["Sin_V4"]
             mycol = mydb["mainChain_V4"]
             for row in listInputsWithInterest:
-                if zeroUtxoSeedFlag == True:
+                if zeroUtxoSeedFlag is True:
                     print(
                         color4, 'cant go lower the fee with this , because this UTXO have zero interest....', resetColor)
                     period = 5
@@ -404,16 +404,16 @@ def mineData(startBlock, endBlock):
                         createdAmount = row['outputAmount']
                         createdCoinsInCoinbase += createdAmount
                         #   >>>>>>>>>> check pos or pow create this block
-                        if txCounter0 == True :
+                        if txCounter0 is True :
                             txCounter0 = False
 
-                            if coinbaseOutputAddress == 'nulldataORnonstandard' and checkCreatorFlag == False :
+                            if coinbaseOutputAddress == 'nulldataORnonstandard' and checkCreatorFlag is False :
                                 blockCreator = 'pos'
-                                checkCreatorFlag == True
+                                checkCreatorFlag is True
                                 print (color1 , 'pos' , resetColor)
-                            elif coinbaseOutputAddress != 'nulldataORnonstandard' and checkCreatorFlag == False :
+                            elif coinbaseOutputAddress != 'nulldataORnonstandard' and checkCreatorFlag is False :
                                 blockCreator = 'pow'
-                                checkCreatorFlag == True
+                                checkCreatorFlag is True
                                 print (color3 , 'pow' , resetColor)
                             print ('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
                             #else :
@@ -775,7 +775,7 @@ firstPassFlag = True
 while True:
     currentBlock = blockHeight()
     print('block height now in chain: ', currentBlock)
-    if firstPassFlag == True:
+    if firstPassFlag is True:
         print(color4, 'For security reasons the last entrys from all Dbs need to remove', resetColor)
         firstPassFlag = False
     if block != currentBlock:

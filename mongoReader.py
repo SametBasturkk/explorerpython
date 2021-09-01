@@ -19,7 +19,7 @@ def databaseIntegrity():
         if height == 0:
             return (str(counter) + " block's checked and all is good")
 #        print('height', height)
-        if flag == False:
+        if flag is False:
             previous = row['previousBlockHash']
             flag = True
             continue
@@ -126,7 +126,7 @@ def blockTimeLast200Blocks():
         target = mycol.find_one(myquery)
         blockNumber = target['_id']
         time = target['blockTime']
-        if flag == False:
+        if flag is False:
             pastBlockTime = time
             flag = True
             continue

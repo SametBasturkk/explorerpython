@@ -208,7 +208,7 @@ def txidAnalyzer(txidHash, currentBlock):
             else:
                 creationType = 'other'
 
-        elif outputCat == 'nulldata' and coinbaseFlag == False and coinstakeFlag == False:
+        elif outputCat == 'nulldata' and coinbaseFlag is False and coinstakeFlag is False:
             outputAmount = 0
             outputAddress = 'nulldata'
             output_n = 0
@@ -258,7 +258,7 @@ def txidAnalyzer(txidHash, currentBlock):
                 totalAmountAfterPeriod = InitialAmount + interestForThisPeriodInSIN
 
         else:
-            if coinbaseFlag == False and coinstakeFlag == False :
+            if coinbaseFlag is False and coinstakeFlag is False :
                 outputType = scriptPubKeyList ['type']
                 if outputType == 'nulldata' or outputType == 'nonstandard' :
                     outputAddress = 'nulldataORnonstandard'
@@ -292,14 +292,14 @@ def txidAnalyzer(txidHash, currentBlock):
             output = {'outputCat': outputCat, 'creationType': creationType, 'outputAddress': outputAddress,
                       'outputAmount': outputAmount, 'output_n': output_n, 'state': 'UTXO'}
 
-        elif outputCat == 'checklocktimeverify' and createTimeLOckOutputFlag == True:
+        elif outputCat == 'checklocktimeverify' and createTimeLOckOutputFlag is True:
             #print (color3 , 'record in txidAnalyzer as >>> checklocktimeverify' , resetColor)
             output = {'outputCat': outputCat, 'outputAddress': outputAddress,
                       'outputAmount': outputAmount, 'output_n': output_n,  'interestActivatedInBlock': endLockBlock,
                       'lockedBlocks': lockedPeriodInBlocks, 'lockedDays': lockedPeriodInDays,
                       'interestAtEnd': interestForThisPeriodInSIN, 'activatedAmount': totalAmountAfterPeriod, 'timeLockActivated': 'unspecified', 'state': 'UTXO'}
 
-        elif outputCat == 'checklocktimeverify' and createTimeLOckOutputFlag == False:
+        elif outputCat == 'checklocktimeverify' and createTimeLOckOutputFlag is False:
             #print (color3 , 'record in txidAnalyzer as >>> checklocktimeverify' , resetColor)
             createTimeLOckOutputFlag = True
             output = {'outputCat': outputCat, 'outputAddress': outputAddress,
@@ -308,7 +308,7 @@ def txidAnalyzer(txidHash, currentBlock):
                       'interestAtEnd': 0, 'activatedAmount': outputAmount, 'negativeLockPeriod': 'True', 'state': 'UTXO'}
 
         else:
-            if coinbaseFlag == False:
+            if coinbaseFlag is False:
                 #print (color3 , 'record in txidAnalyzer as >>> last' , resetColor)
                 output = {'outputCat': outputCat, 'outputAddress': outputAddress,
                           'outputAmount': outputAmount, 'output_n': output_n, 'state': 'UTXO'}
