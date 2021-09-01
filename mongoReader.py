@@ -36,7 +36,7 @@ def findEllement(dataInput):
         question = int(dataInput)
     except:
         question = dataInput
-    if type(question) == int:
+    if type(question) is int:
         if question > 0 and question <= last_idInMongo():
             print('in')
             myclient = pymongo.MongoClient("mongodb://localhost:27017/")
